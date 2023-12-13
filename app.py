@@ -3,9 +3,11 @@ import time
 import random
 import pyautogui
 import pyperclip
+from datetime import datetime
 
 # Constants
 DEBUG = True
+LOG_FILE = 'completed_tasks.log'
 TELEGRAM_GROUP_URL = "https://web.telegram.org/a/#-1001936563741"
 TELEGRAM_BOT_URL = "https://web.telegram.org/a/#1987747444"
 #real-bot 5632459916
@@ -125,6 +127,8 @@ def send_task(task_number ,url):
     print(f"Task {task_number} was sent")
 
 def main():
+    global last_processed_task
+    
     task_number, task_url = get_telegram_message()
 
     if task_number and task_url:
@@ -136,9 +140,14 @@ def main():
         else:
             send_task(task_number, task_url)
             last_processed_task = task_number
+
+            # Log completed task
+            now = datetime.now()
+            current_date_time = now.strftime("%Y-%m-%d %H:%M:%S")
+            with open(LOG_FILE, 'a') as log:
+                log.write(f"{current_date_time} - Task {task_number}: {task_url}\n")
     else:
         print("No Task information with YouTube URL found in Telegram messages.")
-
 
 if __name__ == "__main__":
     while True:

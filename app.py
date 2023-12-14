@@ -8,14 +8,13 @@ from datetime import datetime
 # Constants
 DEBUG = False
 LOG_FILE = 'completed_tasks.log'
-TELEGRAM_GROUP_URL = "https://web.telegram.org/a/#-1001936563741"
-TELEGRAM_BOT_URL = "https://web.telegram.org/a/#1987747444"
-#real-bot 5632459916
+TELEGRAM_GROUP_URL = "https://web.telegram.org/a/#xxxxxxxx"
+TELEGRAM_BOT_URL = "https://web.telegram.org/a/#yyyyyyyyy"
 
 # Vars
 last_processed_task = None
 like_btn_x, like_btn_y = 587, 754
-grab_img_x, grab_img_y = 1162, 205
+grab_img_x, grab_img_y = 1180, 205
 drop_img_x, drop_img_y = 639, 639
 
 def get_telegram_message():

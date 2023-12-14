@@ -6,7 +6,7 @@ import pyperclip
 from datetime import datetime
 
 # Constants
-DEBUG = True
+DEBUG = False
 LOG_FILE = 'completed_tasks.log'
 TELEGRAM_GROUP_URL = "https://web.telegram.org/a/#-1001936563741"
 TELEGRAM_BOT_URL = "https://web.telegram.org/a/#1987747444"
@@ -35,8 +35,8 @@ def get_telegram_message():
 
         clipboard_content = pyperclip.paste()
 
-        task_pattern = r"【Task (\d+)】"
-        link_pattern = r"https?://\S+"
+        task_pattern = r"Task\s?(\d+)"
+        link_pattern = r"https?://youtu\.be/\S+"
         task_matches = re.findall(task_pattern, clipboard_content)
         link_matches = re.findall(link_pattern, clipboard_content)
 
